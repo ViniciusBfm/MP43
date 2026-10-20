@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; connect-src 'self'">
+  <title>MP43</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
+
+  <header class="top">
+    <div class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span>
+      <span>MP4<span class="three">3</span></span>
+    </div>
+    <div class="top-actions">
+      <button id="btnFolder" class="btn-ghost" type="button" title="Abrir a pasta de downloads">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Pasta
+      </button>
+      <button id="btnSettings" class="btn-ghost icon-only" type="button" title="Configurações">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="left">
+      <div class="hero">
+        <div class="eyebrow"><b>MP4</b> + <b>MP3</b> num só lugar</div>
+        <h1>Baixe qualquer vídeo em <span class="grad">MP4 ou MP3</span></h1>
+        <p class="lead">Cole o link do YouTube, Instagram, TikTok ou de centenas de outros sites. Links de playlist baixam todos os vídeos de uma vez.</p>
+      </div>
+
+      <div id="toolsBanner" class="banner hidden">
+        <div><strong>Faltam componentes para baixar.</strong><span id="toolsBannerText"></span></div>
+      </div>
+
+      <form id="form" class="search" autocomplete="off">
+        <div class="search-box">
+          <svg class="link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg>
+          <input id="url" type="text" placeholder="Cole o link do vídeo ou da playlist aqui…" spellcheck="false">
+          <button id="btnPaste" class="btn-ghost" type="button" title="Colar da área de transferência">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="8" height="4" rx="1"/><path d="M16 5h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/></svg>Colar
+          </button>
+          <button id="btnInfo" class="btn-main" type="submit">
+            <span class="lbl">Buscar</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <button id="clipHint" class="clip-hint hidden" type="button"></button>
+      <div id="alert" class="alert hidden" role="alert"></div>
+
+      <div id="result" class="result hidden">
+        <div class="thumb">
+          <img id="thumb" alt="">
+          <span class="site" id="site"></span>
+          <span class="dur" id="dur"></span>
+        </div>
+        <div class="r-body">
+          <div class="r-title" id="title"></div>
+          <div class="r-author" id="author"></div>
+          <div id="plBox" class="pl hidden">
+            <div class="pl-head">
+              <label class="pl-all"><input id="plAll" type="checkbox" checked> <span id="plCount"></span></label>
+              <span id="plSkipped" class="pl-skipped"></span>
+            </div>
+            <div id="plList" class="pl-list"></div>
+            <div class="pl-folder">Salvos na pasta <b id="plFolder"></b></div>
+          </div>
+          <div class="seg" id="seg">
+            <span class="pill"></span>
+            <button type="button" data-type="mp4" class="on">MP4 · Vídeo</button>
+            <button type="button" data-type="mp3">MP3 · Áudio</button>
+          </div>
+          <div class="chips" id="chips"></div>
+          <div class="r-actions">
+            <button id="btnDownload" class="btn-main" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+              <span id="dlLabel">Baixar MP4</span>
+            </button>
+            <span id="added" class="added hidden">✓ Adicionado aos downloads</span>
+          </div>
+          <button id="plHint" class="pl-hint hidden" type="button">Este vídeo faz parte de uma playlist. <b>Ver a playlist inteira →</b></button>
+        </div>
+      </div>
+
+      <div id="platforms" class="platforms">
+        <span>YouTube</span><span>Instagram</span><span>TikTok</span><span>X / Twitter</span><span>Facebook</span><span>Vimeo</span><span>SoundCloud</span><span>+ centenas</span>
+      </div>
+      <p class="legal">Baixe apenas conteúdo seu, livre de direitos ou que você tenha permissão para salvar.</p>
+    </section>
+
+    <aside class="right">
+      <div class="dl-head">
+        <h2>Downloads <span id="dlCount" class="count"></span></h2>
+        <button id="btnClear" class="btn-ghost sm" type="button" title="Remover concluídos, com erro e cancelados da lista">Limpar lista</button>
+      </div>
+      <div id="jobs" class="jobs"></div>
+      <div id="jobsEmpty" class="jobs-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+        <p>Seus downloads aparecem aqui.</p>
+        <span>Dica: copie um link e volte para o MP43 — ele detecta sozinho.</span>
+      </div>
+    </aside>
+  </main>
+
+  <div id="settings" class="modal-overlay hidden">
+    <div class="modal" role="dialog" aria-labelledby="settingsTitle">
+      <div class="modal-head">
+        <h2 id="settingsTitle">Configurações</h2>
+        <button id="btnCloseSettings" class="btn-ghost icon-only" type="button" title="Fechar">✕</button>
+      </div>
+      <h3>Pasta de destino</h3>
+      <div class="folder-row">
+        <code id="outDir"></code>
+        <button id="btnChooseFolder" class="btn-ghost" type="button">Alterar</button>
+      </div>
+      <h3>Componentes</h3>
+      <p class="muted">Já vêm incluídos no MP43: o yt-dlp baixa, o FFmpeg monta o MP4/MP3 e o Deno ajuda com alguns vídeos do YouTube. Se os downloads do YouTube começarem a falhar, atualize o yt-dlp.</p>
+      <div id="toolList" class="tool-list"></div>
+      <div class="settings-actions">
+        <button id="btnInstall" class="btn-main sm" type="button">Atualizar yt-dlp</button>
+        <button id="btnLicenses" class="btn-ghost sm" type="button">Licenças dos componentes</button>
+      </div>
+      <pre id="installLog" class="install-log hidden"></pre>
+    </div>
+  </div>
+
+  <div id="toasts"></div>
+  <script src="app.js"></script>
+</body>
+</html>

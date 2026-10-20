@@ -1,0 +1,41 @@
+{
+  "name": "mp43",
+  "productName": "MP43",
+  "version": "1.0.0",
+  "description": "MP43 - baixe vídeos em MP4 e músicas em MP3",
+  "main": "main.js",
+  "author": "MP43",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "33.4.11",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.mp43.app",
+    "productName": "MP43",
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "renderer/**/*",
+      "assets/**/*"
+    ],
+    "extraResources": [
+      { "from": "vendor", "to": "vendor" }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "MP43"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+﻿{
+    "deno":  "deno 2.9.7 (stable, release, x86_64-pc-windows-msvc)",
+    "yt-dlp":  "2026.08.19",
+    "ffmpeg":  "ffmpeg version N-126374-g089a48eb36-20260831 Copyright (c) 2000-2026 the FFmpeg developers"
+}

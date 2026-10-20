@@ -1,0 +1,24 @@
+MP43 - avisos de licença de componentes de terceiros
+======================================================
+
+O MP43 inclui os programas abaixo, sem modificações. Cada um pertence aos seus
+autores e é distribuído sob a sua própria licença. As versões incluídas estão em
+versions.json, nesta mesma pasta.
+
+yt-dlp
+  Licença: The Unlicense (domínio público)
+  Site e código-fonte: https://github.com/yt-dlp/yt-dlp
+
+FFmpeg e ffprobe (compilação "win64-gpl" de BtbN/FFmpeg-Builds, distribuída pelo yt-dlp)
+  Licença: GNU General Public License versão 3 (texto completo em ffmpeg\LICENSE.txt)
+  Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo sob os
+  termos da GPL versão 3. Ele é distribuído SEM NENHUMA GARANTIA.
+  Código-fonte do FFmpeg: https://ffmpeg.org/download.html  /  https://git.ffmpeg.org/ffmpeg.git
+  Scripts de compilação e fontes das bibliotecas: https://github.com/BtbN/FFmpeg-Builds
+  Também é possível obter o código-fonte correspondente a esta compilação mediante
+  solicitação ao distribuidor do MP43.
+
+Deno
+  Licença: MIT
+  Copyright 2018-2026 the Deno authors
+  Site e código-fonte: https://github.com/denoland/deno
